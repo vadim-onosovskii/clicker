@@ -7,11 +7,14 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
     private val timer = Timer()
+    //val TextView1 = findViewById<TextView>(R.id.textView2)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,12 +32,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
-        timer.scheduleAtFixedRate(TimeTask(), 0, 500);
+        timer.scheduleAtFixedRate(TimeTask(), 0, 500)
     }
     private inner class TimeTask: TimerTask() {
         override fun run() {
             ++variables.cnt;
             saveData();
+            MainScope().launch {
+                val TextView1 = findViewById<TextView>(R.id.textView2)
+                TextView1.text = variables.cnt.toString()
+            }
         }
     }
     private fun saveData() {
