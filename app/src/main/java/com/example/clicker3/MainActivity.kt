@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var timer: CountDownTimer;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         loadData()
         saveData()
         TextView1.text = variables.cnt.toString()
-        Button1.setOnClickListener{
+        Button1.setOnClickListener {
             variables.cnt++
             saveData()
             TextView1.text = variables.cnt.toString()
@@ -26,6 +28,24 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
+        timer = object : CountDownTimer(5000, 1000) {
+            override fun onTick(remaining: Long) {
+                ++variables.cnt;
+                saveData()
+                TextView1.text = variables.cnt.toString()
+            }
+            override fun onFinish() {
+                timer.start();
+            }
+        }
+    }
+    override fun onStart() {
+        super.onStart()
+        timer.start()
+    }
+    override fun onStop() {
+        super.onStop()
+        timer.cancel()
     }
     private fun saveData() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
