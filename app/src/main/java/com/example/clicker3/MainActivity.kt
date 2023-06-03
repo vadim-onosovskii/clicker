@@ -15,20 +15,18 @@ import java.util.TimerTask
 class MainActivity : AppCompatActivity() {
     private val timer = Timer()
     //val TextView1 = findViewById<TextView>(R.id.textView2)
-    var TextView1 : TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val Button1 = findViewById<Button>(R.id.button)
         val Menu = findViewById<TextView>(R.id.menu)
-        TextView1 = findViewById(R.id.textView2)
+        val TextView1 = findViewById<TextView>(R.id.textView2)
         loadData()
         saveData()
 
         Button1.setOnClickListener {
             variables.cnt++
             saveData()
-            TextView1!!.text = variables.cnt.toString()
         }
         Menu.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
