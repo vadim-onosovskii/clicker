@@ -7,18 +7,19 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
+import java.util.Timer
+import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var timer: CountDownTimer;
+    private val timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val Button1 = findViewById<Button>(R.id.button)
-        val TextView1 = findViewById<TextView>(R.id.textView2)
         val Menu = findViewById<TextView>(R.id.menu)
+        val TextView1 = findViewById<TextView>(R.id.textView2)
         loadData()
         saveData()
-        TextView1.text = variables.cnt.toString()
         Button1.setOnClickListener {
             variables.cnt++
             saveData()
@@ -28,24 +29,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
-        timer = object : CountDownTimer(5000, 1000) {
-            override fun onTick(remaining: Long) {
-                ++variables.cnt;
-                saveData()
-                TextView1.text = variables.cnt.toString()
-            }
-            override fun onFinish() {
-                timer.start();
-            }
+        timer.scheduleAtFixedRate(TimeTask(), 0, 500);
+    }
+    private inner class TimeTask: TimerTask() {
+        override fun run() {
+            ++variables.cnt;
+            saveData();
         }
-    }
-    override fun onStart() {
-        super.onStart()
-        timer.start()
-    }
-    override fun onStop() {
-        super.onStop()
-        timer.cancel()
     }
     private fun saveData() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);

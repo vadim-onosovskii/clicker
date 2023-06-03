@@ -1,6 +1,7 @@
 package com.example.clicker3
 
 import android.content.Context
+import android.widget.TextView
 
 class variables {
     companion object {
