@@ -12,18 +12,23 @@ import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
     private val timer = Timer()
+    var TextView1 : TextView? = null
+    fun new_counter_value(new_value : Int){
+        TextView1!!.text = new_value.toString()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val Button1 = findViewById<Button>(R.id.button)
         val Menu = findViewById<TextView>(R.id.menu)
-        val TextView1 = findViewById<TextView>(R.id.textView2)
+        TextView1 = findViewById(R.id.textView2)
         loadData()
         saveData()
+
         Button1.setOnClickListener {
             variables.cnt++
             saveData()
-            TextView1.text = variables.cnt.toString()
+            TextView1!!.text = variables.cnt.toString()
         }
         Menu.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
@@ -34,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private inner class TimeTask: TimerTask() {
         override fun run() {
             ++variables.cnt;
+            new_counter_value(variables.cnt)
             saveData();
         }
     }
