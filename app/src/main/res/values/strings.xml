@@ -7,4 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="you_are_in_menu">YOU ARE IN MENU!</string>
     <string name="back">Back</string>
+    <string name="reset">RESET</string>
+    <string name="lemonade_stand">Lemonade stand</string>
+    <string name="_100">100</string>
 </resources>
