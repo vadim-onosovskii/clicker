@@ -8,11 +8,11 @@ class variables {
         public var cnt = 0
         public var moneypersec = 1;
         public var add = 1.2
-        public var lem_stand = 100
+        public var lem_stand_price = 100
         fun buylem() : Boolean {
-            if(cnt>= lem_stand) {
-                cnt -= lem_stand
-                lem_stand = (lem_stand * add).toInt();
+            if(cnt>= lem_stand_price) {
+                cnt -= lem_stand_price
+                lem_stand_price = (lem_stand_price * add).toInt();
                 ++moneypersec
                 return true;
             }

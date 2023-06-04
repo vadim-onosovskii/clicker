@@ -18,7 +18,7 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
         val back_Button = findViewById<TextView>(R.id.back_link)
         val lemStand = findViewById<TextView>(R.id.buy_lem)
-        lemStand.text = variables.lem_stand.toString()
+        lemStand.text = variables.lem_stand_price.toString()
         back_Button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -26,7 +26,7 @@ class MainActivity2 : AppCompatActivity() {
         }
         lemStand.setOnClickListener {
             if (variables.buylem()) {
-                lemStand.text = variables.lem_stand.toString()
+                lemStand.text = variables.lem_stand_price.toString()
                 saveData()
             }
         }
@@ -45,7 +45,7 @@ class MainActivity2 : AppCompatActivity() {
         val editor = sharedPreferences.edit();
         editor.apply {
             putInt("COUNT_KEY", variables.cnt);
-            putInt("LemStand_KEY", variables.lem_stand);
+            putInt("LemStand_KEY", variables.lem_stand_price);
             putInt("MoneyPerSec_KEY", variables.moneypersec)
         }.apply()
     }

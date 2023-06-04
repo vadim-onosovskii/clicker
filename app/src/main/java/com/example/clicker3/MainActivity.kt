@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         Reset.setOnClickListener {
             variables.cnt = 0
             variables.moneypersec = 1
-            variables.lem_stand = 100
+            variables.lem_stand_price = 100
             saveData()
         }
         timer.scheduleAtFixedRate(TimeTask(), 0, 1000)
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit();
         editor.apply {
             putInt("COUNT_KEY", variables.cnt);
-            putInt("LemStand_KEY", variables.lem_stand);
+            putInt("LemStand_KEY", variables.lem_stand_price);
             putInt("MoneyPerSec_KEY", variables.moneypersec)
         }.apply()
     }
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         val savedLemStand = sharedPreferences.getInt("LemStand_KEY", 0);
         val savedMoneyPerSec = sharedPreferences.getInt("MoneyPerSec_KEY", 1);
         variables.cnt = savedCount;
-        variables.lem_stand = savedLemStand
+        variables.lem_stand_price = savedLemStand
         variables.moneypersec = savedMoneyPerSec
     }
 }
