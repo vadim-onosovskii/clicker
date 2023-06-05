@@ -10,4 +10,17 @@
     <string name="reset">RESET</string>
     <string name="lemonade_stand">Lemonade stand</string>
     <string name="_100">100</string>
+    <string name="your_income_per_sec">YOUR INCOME PER SEC:</string>
+    <string name="zero">zero</string>
+    <string name="build_a_startup">Build a Startup</string>
+    <string name="open_an_advertising_agency">Open an advertising agency</string>
+    <string name="buy_twitter">Buy Twitter</string>
+    <string name="buy_google">Buy Google</string>
+    <string name="monopolize_tourism_industy">Monopolize tourism industy</string>
+    <string name="_1000">1000</string>
+    <string name="buyLem">100</string>
+    <string name="_12000">12000</string>
+    <string name="_150000">150000</string>
+    <string name="_15000000">15000000</string>
+    <string name="_30000000">30000000</string>
 </resources>
