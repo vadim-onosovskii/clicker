@@ -23,4 +23,7 @@
     <string name="_150000">150000</string>
     <string name="_15000000">15000000</string>
     <string name="_30000000">30000000</string>
+    <string name="amount">Amount</string>
+    <string name="get">Get</string>
+    <string name="shop">Shop</string>
 </resources>

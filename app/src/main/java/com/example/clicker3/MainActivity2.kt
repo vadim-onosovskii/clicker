@@ -1,13 +1,10 @@
 package com.example.clicker3
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
@@ -16,7 +13,7 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        val back_Button = findViewById<TextView>(R.id.back_link)
+        val BackLink = findViewById<TextView>(R.id.back_link)
         val lemStand = findViewById<TextView>(R.id.buylem)
         val startUp = findViewById<TextView>(R.id.buyStartUp)
         val advAgency = findViewById<TextView>(R.id.buyAdvAgency)
@@ -29,7 +26,7 @@ class MainActivity2 : AppCompatActivity() {
         twitter.text = variables.twitter.toString()
         google.text = variables.google.toString()
         tourism.text = variables.tourism.toString()
-        back_Button.setOnClickListener {
+        BackLink.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             timer.cancel()
@@ -70,12 +67,17 @@ class MainActivity2 : AppCompatActivity() {
                 saveData()
             }
         }
-        timer.scheduleAtFixedRate(TimeTask(), 0, 1000)
+        timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
     }
 
     private inner class TimeTask : TimerTask() {
         override fun run() {
-            variables.cnt += variables.moneypersec;
+            if(variables.is_timerrate_too_low) {
+                variables.cnt += variables.moneypersec / 10
+            }
+            else{
+                if(variables.moneypersec > 0) variables.cnt++
+            }
             saveData();
         }
     }

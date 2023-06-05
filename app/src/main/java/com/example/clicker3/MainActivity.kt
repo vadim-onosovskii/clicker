@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import androidx.core.text.isDigitsOnly
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -17,52 +18,59 @@ open class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val Button1 = findViewById<Button>(R.id.button)
+        val ButtonClick = findViewById<Button>(R.id.button_click)
         val Menu = findViewById<TextView>(R.id.menu)
-        val TextView1 = findViewById<TextView>(R.id.textView2)
-        val Reset = findViewById<TextView>(R.id.reset);
+        val CurrentAmountText = findViewById<TextView>(R.id.current_amount)
+        val Reset = findViewById<TextView>(R.id.reset)
+        val ButtonGet = findViewById<Button>(R.id.button_get)
+        val AmountText = findViewById<EditText>(R.id.amount)
         loadData()
         saveData()
 
-        Button1.setOnClickListener {
+        ButtonClick.setOnClickListener {
             variables.cnt++
             saveData()
-            TextView1.text = variables.cnt.toString()
+            CurrentAmountText.text = variables.cnt.toString()
         }
         Menu.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
             timer.cancel()
         }
+        ButtonGet.setOnClickListener {
+            if (AmountText.text.isDigitsOnly()) {
+                variables.cnt = AmountText.text.toString().toInt()
+                saveData()
+            }
+        }
         Reset.setOnClickListener {
-            variables.cnt = 1000
-            variables.lem_stand_price = 100
-            variables.startUp = 1000
-            variables.advAgency = 12000
-            variables.twitter = 150000
-            variables.google = 1500000
-            variables.tourism = 30000000
-            variables.moneypersec = 0
+            variables.reset()
             saveData()
         }
-        timer.scheduleAtFixedRate(TimeTask(), 0, 1000)
+        timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
     }
 
     private inner class TimeTask : TimerTask() {
         override fun run() {
-            variables.cnt += variables.moneypersec;
-            saveData();
+            if(variables.is_timerrate_too_low) {
+                variables.cnt += variables.moneypersec / 10
+            }
+            else{
+                if(variables.moneypersec > 0) variables.cnt++
+            }
+            saveData()
             MainScope().launch {
-                val TextView1 = findViewById<TextView>(R.id.textView2)
+                val TextView1 = findViewById<TextView>(R.id.current_amount)
                 val IncomeSec = findViewById<TextView>(R.id.incomesec)
                 TextView1.text = variables.cnt.toString()
-                IncomeSec.text = variables.moneypersec.toString();
+                IncomeSec.text = variables.moneypersec.toString()
             }
         }
     }
+
     private fun saveData() {
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
-        val editor = sharedPreferences.edit();
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
         editor.apply {
             putInt("COUNT_KEY", variables.cnt)
             putInt("LemStand_KEY", variables.lem_stand_price)
@@ -78,22 +86,14 @@ open class MainActivity : AppCompatActivity() {
 
     private fun loadData() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedCount = sharedPreferences.getInt("COUNT_KEY", 0)
-        val savedLemStand = sharedPreferences.getInt("LemStand_KEY", 0)
-        val savedStartUp = sharedPreferences.getInt("StartUp_KEY", 0)
-        val savedAdvAgency = sharedPreferences.getInt("AdvAgency_KEY", 0)
-        val savedTwitter = sharedPreferences.getInt("Twitter_KEY", 0)
-        val savedGoogle = sharedPreferences.getInt("Google_KEY", 0)
-        val savedTourism = sharedPreferences.getInt("Tourism_KEY", 0)
-        val savedMoneyPerSec = sharedPreferences.getInt("MoneyPerSec_KEY", 0)
-        variables.cnt = savedCount;
-        variables.lem_stand_price = savedLemStand
-        variables.startUp = savedStartUp;
-        variables.advAgency = savedAdvAgency;
-        variables.twitter = savedTwitter;
-        variables.google = savedGoogle;
-        variables.tourism = savedTourism;
-        variables.moneypersec = savedMoneyPerSec
+        variables.cnt = sharedPreferences.getInt("COUNT_KEY", 0)
+        variables.lem_stand_price = sharedPreferences.getInt("LemStand_KEY", 0)
+        variables.startUp = sharedPreferences.getInt("StartUp_KEY", 0)
+        variables.advAgency = sharedPreferences.getInt("AdvAgency_KEY", 0)
+        variables.twitter = sharedPreferences.getInt("Twitter_KEY", 0)
+        variables.google = sharedPreferences.getInt("Google_KEY", 0)
+        variables.tourism = sharedPreferences.getInt("Tourism_KEY", 0)
+        variables.moneypersec = sharedPreferences.getInt("MoneyPerSec_KEY", 0)
     }
 }
 
