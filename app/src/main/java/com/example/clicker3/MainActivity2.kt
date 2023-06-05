@@ -23,7 +23,12 @@ class MainActivity2 : AppCompatActivity() {
         val twitter = findViewById<TextView>(R.id.buyTwitter)
         val google = findViewById<TextView>(R.id.buyGoogle)
         val tourism = findViewById<TextView>(R.id.buyTourism)
-        //lemStand.text = variables.lem_stand.toString()
+        lemStand.text = variables.lem_stand_price.toString()
+        startUp.text = variables.startUp.toString()
+        advAgency.text = variables.advAgency.toString()
+        twitter.text = variables.twitter.toString()
+        google.text = variables.google.toString()
+        tourism.text = variables.tourism.toString()
         back_Button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -31,7 +36,7 @@ class MainActivity2 : AppCompatActivity() {
         }
         lemStand.setOnClickListener {
             if (variables.buylem()) {
-                lemStand.text = variables.lem_stand.toString()
+                lemStand.text = variables.lem_stand_price.toString()
                 saveData()
             }
         }
@@ -79,14 +84,14 @@ class MainActivity2 : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
         val editor = sharedPreferences.edit();
         editor.apply {
-            putFloat("COUNT_KEY", variables.cnt)
-            putInt("LemStand_KEY", variables.lem_stand)
+            putInt("COUNT_KEY", variables.cnt)
+            putInt("LemStand_KEY", variables.lem_stand_price)
             putInt("StartUp_KEY", variables.startUp);
             putInt("AdvAgency_KEY", variables.advAgency);
             putInt("Twitter_KEY", variables.twitter);
             putInt("Google_KEY", variables.google);
             putInt("Tourism_KEY", variables.tourism);
-            putFloat("MoneyPerSec_KEY", variables.moneypersec)
+            putInt("MoneyPerSec_KEY", variables.moneypersec)
         }.apply()
     }
 }
