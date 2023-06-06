@@ -33,7 +33,7 @@ open class MainActivity : AppCompatActivity() {
             CurrentAmountText.text = variables.cnt.toString()
         }
         Menu.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, LegalBusiness::class.java)
             startActivity(intent)
             timer.cancel()
         }
@@ -72,13 +72,15 @@ open class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.apply {
-            putInt("COUNT_KEY", variables.cnt)
+            putInt("Count_KEY", variables.cnt)
             putInt("LemStand_KEY", variables.lem_stand_price)
-            putInt("StartUp_KEY", variables.startUp)
-            putInt("AdvAgency_KEY", variables.advAgency)
-            putInt("Twitter_KEY", variables.twitter)
-            putInt("Google_KEY", variables.google)
-            putInt("Tourism_KEY", variables.tourism)
+            putInt("StartUp_KEY", variables.startUp_price)
+            putInt("AdvAgency_KEY", variables.advAgency_price)
+            putInt("Twitter_KEY", variables.twitter_price)
+            putInt("Google_KEY", variables.google_price)
+            putInt("Tourism_KEY", variables.tourism_price)
+            putLong("Timerrate_KEY", variables.timerrate)
+            putBoolean("Is_Timerrate_Too_Low_KEY", variables.is_timerrate_too_low)
             putInt("MoneyPerSec_KEY", variables.moneypersec)
         }.apply()
     }
@@ -86,13 +88,15 @@ open class MainActivity : AppCompatActivity() {
 
     private fun loadData() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        variables.cnt = sharedPreferences.getInt("COUNT_KEY", 0)
+        variables.cnt = sharedPreferences.getInt("Count_KEY", 0)
         variables.lem_stand_price = sharedPreferences.getInt("LemStand_KEY", 0)
-        variables.startUp = sharedPreferences.getInt("StartUp_KEY", 0)
-        variables.advAgency = sharedPreferences.getInt("AdvAgency_KEY", 0)
-        variables.twitter = sharedPreferences.getInt("Twitter_KEY", 0)
-        variables.google = sharedPreferences.getInt("Google_KEY", 0)
-        variables.tourism = sharedPreferences.getInt("Tourism_KEY", 0)
+        variables.startUp_price = sharedPreferences.getInt("StartUp_KEY", 0)
+        variables.advAgency_price = sharedPreferences.getInt("AdvAgency_KEY", 0)
+        variables.twitter_price = sharedPreferences.getInt("Twitter_KEY", 0)
+        variables.google_price = sharedPreferences.getInt("Google_KEY", 0)
+        variables.tourism_price = sharedPreferences.getInt("Tourism_KEY", 0)
+        variables.timerrate = sharedPreferences.getLong("Timerrate_KEY", 1000)
+        variables.is_timerrate_too_low = sharedPreferences.getBoolean("Is_Timerrate_Too_Low_KEY", false)
         variables.moneypersec = sharedPreferences.getInt("MoneyPerSec_KEY", 0)
     }
 }

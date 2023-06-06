@@ -8,11 +8,11 @@ import android.widget.TextView
 import java.util.Timer
 import java.util.TimerTask
 
-class MainActivity2 : AppCompatActivity() {
+class LegalBusiness : AppCompatActivity() {
     private val timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.legal_business)
         val BackLink = findViewById<TextView>(R.id.back_link)
         val lemStand = findViewById<TextView>(R.id.buylem)
         val startUp = findViewById<TextView>(R.id.buyStartUp)
@@ -21,11 +21,11 @@ class MainActivity2 : AppCompatActivity() {
         val google = findViewById<TextView>(R.id.buyGoogle)
         val tourism = findViewById<TextView>(R.id.buyTourism)
         lemStand.text = variables.lem_stand_price.toString()
-        startUp.text = variables.startUp.toString()
-        advAgency.text = variables.advAgency.toString()
-        twitter.text = variables.twitter.toString()
-        google.text = variables.google.toString()
-        tourism.text = variables.tourism.toString()
+        startUp.text = variables.startUp_price.toString()
+        advAgency.text = variables.advAgency_price.toString()
+        twitter.text = variables.twitter_price.toString()
+        google.text = variables.google_price.toString()
+        tourism.text = variables.tourism_price.toString()
         BackLink.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -39,31 +39,31 @@ class MainActivity2 : AppCompatActivity() {
         }
         startUp.setOnClickListener {
             if (variables.buyStartUp()) {
-                startUp.text = variables.startUp.toString()
+                startUp.text = variables.startUp_price.toString()
                 saveData()
             }
         }
         advAgency.setOnClickListener {
             if (variables.buyAdvAgency()) {
-                advAgency.text = variables.advAgency.toString()
+                advAgency.text = variables.advAgency_price.toString()
                 saveData()
             }
         }
         twitter.setOnClickListener {
             if (variables.buyTwitter()) {
-                twitter.text = variables.twitter.toString()
+                twitter.text = variables.twitter_price.toString()
                 saveData()
             }
         }
         google.setOnClickListener {
             if (variables.buyGoogle()) {
-                google.text = variables.google.toString()
+                google.text = variables.google_price.toString()
                 saveData()
             }
         }
         tourism.setOnClickListener {
             if (variables.buyTourism()) {
-                tourism.text = variables.tourism.toString()
+                tourism.text = variables.tourism_price.toString()
                 saveData()
             }
         }
@@ -78,7 +78,7 @@ class MainActivity2 : AppCompatActivity() {
             else{
                 if(variables.moneypersec > 0) variables.cnt++
             }
-            saveData();
+            saveData()
         }
     }
 
@@ -86,13 +86,15 @@ class MainActivity2 : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
         val editor = sharedPreferences.edit();
         editor.apply {
-            putInt("COUNT_KEY", variables.cnt)
+            putInt("Count_KEY", variables.cnt)
             putInt("LemStand_KEY", variables.lem_stand_price)
-            putInt("StartUp_KEY", variables.startUp);
-            putInt("AdvAgency_KEY", variables.advAgency);
-            putInt("Twitter_KEY", variables.twitter);
-            putInt("Google_KEY", variables.google);
-            putInt("Tourism_KEY", variables.tourism);
+            putInt("StartUp_KEY", variables.startUp_price)
+            putInt("AdvAgency_KEY", variables.advAgency_price)
+            putInt("Twitter_KEY", variables.twitter_price)
+            putInt("Google_KEY", variables.google_price)
+            putInt("Tourism_KEY", variables.tourism_price)
+            putLong("Timerrate_KEY", variables.timerrate)
+            putBoolean("Is_Timerrate_Too_Low_KEY", variables.is_timerrate_too_low)
             putInt("MoneyPerSec_KEY", variables.moneypersec)
         }.apply()
     }
