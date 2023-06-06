@@ -88,5 +88,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/amount" />
 
+    <TextView
+        android:id="@+id/illegal_business"
+        android:layout_width="61dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="15dp"
+        android:text="Illegal\nBusiness"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,13 @@ class variables {
         var tourism_price = 30000000
         var timerrate : Long = 1000
         var is_timerrate_too_low = false
+
+        var underground_bar_price = 1000
+        var night_club_price = 10000
+        var counterfuit_consumer_goods_price = 100000
+        var casino_proce = 1000000
+        var boardwalk_empire_price = 100000000
+
         fun reset(){
             cnt = 0
             lem_stand_price = 100
@@ -27,6 +34,13 @@ class variables {
             moneypersec = 0
             timerrate = 1000
             is_timerrate_too_low = false
+
+            var underground_bar_price = 1000
+            var night_club_price = 10000
+            var counterfuit_consumer_goods_price = 100000
+            var casino_proce = 1000000
+            var boardwalk_empire_price = 100000000
+            
         }
         fun get_timer_rate(){
             timerrate =  (1000 / moneypersec).toLong()
