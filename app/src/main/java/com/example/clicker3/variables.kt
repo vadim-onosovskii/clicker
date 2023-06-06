@@ -40,7 +40,7 @@ class variables {
             var counterfuit_consumer_goods_price = 100000
             var casino_proce = 1000000
             var boardwalk_empire_price = 100000000
-            
+
         }
         fun get_timer_rate(){
             timerrate =  (1000 / moneypersec).toLong()
