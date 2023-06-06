@@ -15,4 +15,96 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/underground_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:text="Open an underground bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/night_club"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Open a night club"
+        app:layout_constraintStart_toStartOf="@+id/underground_bar"
+        app:layout_constraintTop_toBottomOf="@+id/underground_bar" />
+
+    <TextView
+        android:id="@+id/counterfuit_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Counterfuit goods"
+        app:layout_constraintStart_toStartOf="@+id/night_club"
+        app:layout_constraintTop_toBottomOf="@+id/night_club" />
+
+    <TextView
+        android:id="@+id/casino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Open a casino"
+        app:layout_constraintStart_toStartOf="@+id/counterfuit_goods"
+        app:layout_constraintTop_toBottomOf="@+id/counterfuit_goods" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Create your boardwalk empire"
+        app:layout_constraintStart_toStartOf="@+id/casino"
+        app:layout_constraintTop_toBottomOf="@+id/casino" />
+
+    <TextView
+        android:id="@+id/buy_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="70dp"
+        android:text="1000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/buy_club"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="10000"
+        app:layout_constraintStart_toStartOf="@+id/buy_bar"
+        app:layout_constraintTop_toBottomOf="@+id/buy_bar" />
+
+    <TextView
+        android:id="@+id/buy_counterfuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="100000"
+        app:layout_constraintStart_toStartOf="@+id/buy_club"
+        app:layout_constraintTop_toBottomOf="@+id/buy_club" />
+
+    <TextView
+        android:id="@+id/buy_casino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="1000000"
+        app:layout_constraintStart_toStartOf="@+id/buy_counterfuit"
+        app:layout_constraintTop_toBottomOf="@+id/buy_counterfuit" />
+
+    <TextView
+        android:id="@+id/buy_empire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="1000000000"
+        app:layout_constraintStart_toStartOf="@+id/buy_casino"
+        app:layout_constraintTop_toBottomOf="@+id/buy_casino" />
 </androidx.constraintlayout.widget.ConstraintLayout>

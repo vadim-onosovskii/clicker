@@ -83,8 +83,8 @@ class LegalBusiness : AppCompatActivity() {
     }
 
     private fun saveData() {
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
-        val editor = sharedPreferences.edit();
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
         editor.apply {
             putInt("Count_KEY", variables.cnt)
             putInt("LemStand_KEY", variables.lem_stand_price)
@@ -93,9 +93,15 @@ class LegalBusiness : AppCompatActivity() {
             putInt("Twitter_KEY", variables.twitter_price)
             putInt("Google_KEY", variables.google_price)
             putInt("Tourism_KEY", variables.tourism_price)
+            putInt("Bar_KEY", variables.underground_bar_price)
+            putInt("Club_KEY", variables.night_club_price)
+            putInt("Counterfuit_KEY", variables.counterfuit_goods_price)
+            putInt("Casino_KEY", variables.casino_price)
+            putInt("Empire_KEY", variables.boardwalk_empire_price)
             putLong("Timerrate_KEY", variables.timerrate)
             putBoolean("Is_Timerrate_Too_Low_KEY", variables.is_timerrate_too_low)
             putInt("MoneyPerSec_KEY", variables.moneypersec)
+            putInt("MoneyPerClick_KEY", variables.moneyperclick)
         }.apply()
     }
 }

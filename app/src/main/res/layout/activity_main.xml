@@ -98,5 +98,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/incomeperclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="YOUR INCOME PER CLICK?"
+        app:layout_constraintStart_toStartOf="@+id/income_per_sec"
+        app:layout_constraintTop_toBottomOf="@+id/income_per_sec" />
+
+    <TextView
+        android:id="@+id/incomeclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/incomeperclick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/incomeperclick" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

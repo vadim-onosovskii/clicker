@@ -25,11 +25,12 @@ open class MainActivity : AppCompatActivity() {
         val Reset = findViewById<TextView>(R.id.reset)
         val ButtonGet = findViewById<Button>(R.id.button_get)
         val AmountText = findViewById<EditText>(R.id.amount)
+        val ClickIncome = findViewById<TextView>(R.id.incomeclick)
         loadData()
         saveData()
 
         ButtonClick.setOnClickListener {
-            variables.cnt++
+            variables.cnt += variables.moneyperclick
             saveData()
             CurrentAmountText.text = variables.cnt.toString()
         }
@@ -68,8 +69,10 @@ open class MainActivity : AppCompatActivity() {
             MainScope().launch {
                 val TextView1 = findViewById<TextView>(R.id.current_amount)
                 val IncomeSec = findViewById<TextView>(R.id.incomesec)
+                val ClickIncome = findViewById<TextView>(R.id.incomeclick)
                 TextView1.text = variables.cnt.toString()
                 IncomeSec.text = variables.moneypersec.toString()
+                ClickIncome.text = variables.moneyperclick.toString()
             }
         }
     }
@@ -85,9 +88,15 @@ open class MainActivity : AppCompatActivity() {
             putInt("Twitter_KEY", variables.twitter_price)
             putInt("Google_KEY", variables.google_price)
             putInt("Tourism_KEY", variables.tourism_price)
+            putInt("Bar_KEY", variables.underground_bar_price)
+            putInt("Club_KEY", variables.night_club_price)
+            putInt("Counterfuit_KEY", variables.counterfuit_goods_price)
+            putInt("Casino_KEY", variables.casino_price)
+            putInt("Empire_KEY", variables.boardwalk_empire_price)
             putLong("Timerrate_KEY", variables.timerrate)
             putBoolean("Is_Timerrate_Too_Low_KEY", variables.is_timerrate_too_low)
             putInt("MoneyPerSec_KEY", variables.moneypersec)
+            putInt("MoneyPerClick_KEY", variables.moneyperclick)
         }.apply()
     }
 
@@ -101,9 +110,15 @@ open class MainActivity : AppCompatActivity() {
         variables.twitter_price = sharedPreferences.getInt("Twitter_KEY", 0)
         variables.google_price = sharedPreferences.getInt("Google_KEY", 0)
         variables.tourism_price = sharedPreferences.getInt("Tourism_KEY", 0)
-        variables.timerrate = sharedPreferences.getLong("Timerrate_KEY", 1000)
+        variables.underground_bar_price = sharedPreferences.getInt("Bar_KEY", 1000)
+        variables.night_club_price = sharedPreferences.getInt("Club_KEY", 10000)
+        variables.counterfuit_goods_price = sharedPreferences.getInt("Counterfuit_KEY", 100000)
+        variables.casino_price = sharedPreferences.getInt("Casino_KEY", 1000000)
+        variables.boardwalk_empire_price = sharedPreferences.getInt("Empire_KEY", 100000000)
+        variables.timerrate = sharedPreferences.getLong("Timerrate_KEY", 10000)
         variables.is_timerrate_too_low = sharedPreferences.getBoolean("Is_Timerrate_Too_Low_KEY", false)
         variables.moneypersec = sharedPreferences.getInt("MoneyPerSec_KEY", 0)
+        variables.moneyperclick = sharedPreferences.getInt("MoneyPerClick_KEY", 1)
     }
 }
 
