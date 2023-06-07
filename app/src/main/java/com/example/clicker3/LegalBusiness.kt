@@ -32,37 +32,37 @@ class LegalBusiness : AppCompatActivity() {
             timer.cancel()
         }
         lemStand.setOnClickListener {
-            if (variables.buylem()) {
+            if (variables.buylem() == variables.Companion.result.SUCCESS) {
                 lemStand.text = variables.lem_stand_price.toString()
                 saveData()
             }
         }
         startUp.setOnClickListener {
-            if (variables.buyStartUp()) {
+            if (variables.buyStartUp() == variables.Companion.result.SUCCESS) {
                 startUp.text = variables.startUp_price.toString()
                 saveData()
             }
         }
         advAgency.setOnClickListener {
-            if (variables.buyAdvAgency()) {
+            if (variables.buyAdvAgency() == variables.Companion.result.SUCCESS) {
                 advAgency.text = variables.advAgency_price.toString()
                 saveData()
             }
         }
         twitter.setOnClickListener {
-            if (variables.buyTwitter()) {
+            if (variables.buyTwitter() == variables.Companion.result.SUCCESS) {
                 twitter.text = variables.twitter_price.toString()
                 saveData()
             }
         }
         google.setOnClickListener {
-            if (variables.buyGoogle()) {
+            if (variables.buyGoogle() == variables.Companion.result.SUCCESS) {
                 google.text = variables.google_price.toString()
                 saveData()
             }
         }
         tourism.setOnClickListener {
-            if (variables.buyTourism()) {
+            if (variables.buyTourism() == variables.Companion.result.SUCCESS) {
                 tourism.text = variables.tourism_price.toString()
                 saveData()
             }

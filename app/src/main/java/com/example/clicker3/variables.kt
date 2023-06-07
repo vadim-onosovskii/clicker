@@ -5,6 +5,10 @@ import android.widget.TextView
 
 class variables {
     companion object {
+        enum class result {
+            SUCCESS, UNLUCKY, NOT_ENOUGH
+        }
+
         var cnt = 0
         var moneypersec = 0
         var moneyperclick = 1
@@ -15,7 +19,7 @@ class variables {
         var twitter_price = 150000
         var google_price = 15000000
         var tourism_price = 30000000
-        var timerrate : Long = 1000
+        var timerrate: Long = 1000
         var is_timerrate_too_low = false
 
         var underground_bar_price = 1000
@@ -24,7 +28,7 @@ class variables {
         var casino_price = 1000000
         var boardwalk_empire_price = 100000000
 
-        fun reset(){
+        fun reset() {
             cnt = 0
             moneyperclick = 1
             lem_stand_price = 100
@@ -44,162 +48,184 @@ class variables {
             boardwalk_empire_price = 100000000
 
         }
-        fun get_timer_rate(){
-            timerrate =  (1000 / moneypersec).toLong()
-            if(timerrate < 100){
+
+        fun get_timer_rate() {
+            timerrate = (1000 / moneypersec).toLong()
+            if (timerrate < 100) {
                 timerrate = 100
                 is_timerrate_too_low = true
             }
         }
-        fun buylem(): Boolean {
+
+        //BUY FUNCTIONS
+        fun buylem(): result {
+            val res: result?
             if (cnt >= lem_stand_price) {
                 cnt -= lem_stand_price
                 lem_stand_price = (lem_stand_price * add).toInt()
                 moneypersec += 1
                 get_timer_rate()
-                return true
-            }
-            return false
+                res = result.SUCCESS
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buyStartUp(): Boolean {
+        fun buyStartUp(): result {
+            val res: result?
             if (cnt >= startUp_price) {
                 cnt -= startUp_price
                 startUp_price = (startUp_price * add).toInt()
                 moneypersec += 5
                 get_timer_rate()
-                return true
-            }
-            return false
+                res = result.SUCCESS
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buyAdvAgency(): Boolean {
+        fun buyAdvAgency(): result {
+            val res: result?
             if (cnt >= advAgency_price) {
                 cnt -= advAgency_price
                 advAgency_price = (advAgency_price * add).toInt()
                 moneypersec += 27
                 get_timer_rate()
-                return true
-            }
-            return false
+                res = result.SUCCESS
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buyTwitter(): Boolean {
+        fun buyTwitter(): result {
+            val res: result?
             if (cnt >= twitter_price) {
                 cnt -= twitter_price
                 twitter_price = (twitter_price * add).toInt();
                 moneypersec += 109
                 get_timer_rate()
-                return true
-            }
-            return false
+                res = result.SUCCESS
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buyGoogle(): Boolean {
+        fun buyGoogle(): result {
+            val res: result?
             if (cnt >= google_price) {
                 cnt -= google_price
                 google_price = (google_price * add).toInt()
                 moneypersec += 600
                 get_timer_rate()
-                return true
-            }
-            return false
+                res = result.SUCCESS
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buyTourism(): Boolean {
+        fun buyTourism(): result {
+            val res: result?
             if (cnt >= tourism_price) {
                 cnt -= tourism_price
                 tourism_price = (tourism_price * add).toInt();
                 moneypersec += 8000
                 get_timer_rate()
-                return true
-            }
-            return false
+                res = result.SUCCESS
+            } else res = result.NOT_ENOUGH
+            return res
         }
+
         //OTHER BUISNESS
-        fun buybar(): Boolean {
+        fun buybar(): result {
+            val res: result?
             if (cnt >= underground_bar_price) {
-                val rand = (1..1000).random()
-                if(rand <= 200){
+                val rand = (1..200).random()
+                if (rand <= 1000) {
                     cnt -= 5 * underground_bar_price
-                    //notification
+                    res = result.UNLUCKY
+                } else {
+                    res = result.SUCCESS
                 }
                 cnt -= underground_bar_price
                 underground_bar_price = (underground_bar_price * add).toInt();
                 moneypersec += 5
                 moneyperclick += 15
                 get_timer_rate()
-                return true
+            } else {
+                res = result.NOT_ENOUGH
             }
-            return false
+            return res
         }
 
-        fun buyclub(): Boolean {
+        fun buyclub(): result {
+            val res: result?
             if (cnt >= night_club_price) {
                 val rand = (1..1000).random()
-                if(rand <= 200){
+                if (rand <= 200) {
                     cnt -= 5 * night_club_price
-                    //notification
+                    res = result.UNLUCKY
+                } else {
+                    res = result.SUCCESS
                 }
                 cnt -= night_club_price
                 night_club_price = (night_club_price * add).toInt();
                 moneypersec += 27
                 moneyperclick += 81
                 get_timer_rate()
-                return true
-            }
-            return false
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buycounterfuit(): Boolean {
+        fun buycounterfuit(): result {
+            val res: result?
             if (cnt >= counterfuit_goods_price) {
                 val rand = (1..1000).random()
-                if(rand <= 200){
+                if (rand <= 200) {
                     cnt -= 5 * counterfuit_goods_price
-                    //notification
+                    res = result.UNLUCKY
+                } else {
+                    res = result.SUCCESS
                 }
                 cnt -= counterfuit_goods_price
                 counterfuit_goods_price = (counterfuit_goods_price * add).toInt();
                 moneypersec += 109
                 moneyperclick += 327
                 get_timer_rate()
-                return true
-            }
-            return false
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buycasino(): Boolean {
+        fun buycasino(): result {
+            val res: result?
             if (cnt >= casino_price) {
                 val rand = (1..1000).random()
-                if(rand <= 200){
+                if (rand <= 200) {
                     cnt -= 5 * casino_price
-                    //notification
+                    res = result.UNLUCKY
+                } else {
+                    res = result.SUCCESS
                 }
                 cnt -= casino_price
                 casino_price = (casino_price * add).toInt();
                 moneypersec += 600
                 moneyperclick += 1800
                 get_timer_rate()
-                return true
-            }
-            return false
+            } else res = result.NOT_ENOUGH
+            return res
         }
 
-        fun buyempire(): Boolean {
+        fun buyempire(): result {
+            val res: result?
             if (cnt >= boardwalk_empire_price) {
                 val rand = (1..1000).random()
-                if(rand <= 200){
+                if (rand <= 200) {
                     cnt -= 5 * boardwalk_empire_price
-                    //notification
+                    res = result.UNLUCKY
+                } else {
+                    res = result.SUCCESS
                 }
                 cnt -= boardwalk_empire_price
                 boardwalk_empire_price = (boardwalk_empire_price * add).toInt();
                 moneypersec += 8000
                 moneyperclick += 24000
                 get_timer_rate()
-                return true
-            }
-            return false
+            } else res = result.NOT_ENOUGH
+            return res
         }
     }
 }

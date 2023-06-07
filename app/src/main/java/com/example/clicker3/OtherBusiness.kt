@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import java.util.Timer
@@ -41,33 +42,58 @@ class OtherBusiness : AppCompatActivity() {
             timer.cancel()
         }
         bar.setOnClickListener {
-            if (variables.buybar()) {
+            val res : variables.Companion.result = variables.buybar()
+            if (res == variables.Companion.result.SUCCESS) {
                 bar.text = variables.underground_bar_price.toString()
                 saveData()
             }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
         }
         club.setOnClickListener {
-            if (variables.buyclub()) {
+            val res : variables.Companion.result = variables.buyclub()
+            if (res == variables.Companion.result.SUCCESS) {
                 club.text = variables.night_club_price.toString()
                 saveData()
             }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
         }
         counterfuit.setOnClickListener {
-            if (variables.buycounterfuit()) {
+            val res : variables.Companion.result = variables.buycounterfuit()
+            if (res == variables.Companion.result.SUCCESS) {
                 counterfuit.text = variables.counterfuit_goods_price.toString()
                 saveData()
             }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
         }
         casino.setOnClickListener {
-            if (variables.buycasino()) {
+            val res : variables.Companion.result = variables.buycasino()
+            if (res == variables.Companion.result.SUCCESS) {
                 casino.text = variables.casino_price.toString()
                 saveData()
             }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
         }
         empire.setOnClickListener {
-            if (variables.buyempire()) {
+            val res : variables.Companion.result = variables.buyempire()
+            if (res == variables.Companion.result.SUCCESS) {
                 empire.text = variables.boardwalk_empire_price.toString()
                 saveData()
+            }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
             }
         }
         timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
