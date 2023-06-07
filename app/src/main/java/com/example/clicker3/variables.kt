@@ -134,8 +134,8 @@ class variables {
         fun buybar(): result {
             val res: result?
             if (cnt >= underground_bar_price) {
-                val rand = (1..200).random()
-                if (rand <= 1000) {
+                val rand = (1..1000).random()
+                if (rand <= 200) {
                     cnt -= 5 * underground_bar_price
                     res = result.UNLUCKY
                 } else {
