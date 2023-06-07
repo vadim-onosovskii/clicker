@@ -1,9 +1,13 @@
 package com.example.clicker3
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import java.util.Timer
 import java.util.TimerTask
@@ -19,11 +23,18 @@ class OtherBusiness : AppCompatActivity() {
         val counterfuit = findViewById<TextView>(R.id.buy_counterfuit)
         val casino = findViewById<TextView>(R.id.buy_casino)
         val empire = findViewById<TextView>(R.id.buy_empire)
+        val LoseButton = findViewById<Button>(R.id.lose_button)
+        val myDialog = Dialog(this)
         bar.text = variables.underground_bar_price.toString()
         club.text = variables.night_club_price.toString()
         counterfuit.text = variables.counterfuit_goods_price.toString()
         casino.text = variables.casino_price.toString()
         empire.text = variables.boardwalk_empire_price.toString()
+        LoseButton.setOnClickListener{
+            myDialog.setContentView(R.layout.popup_fail)
+            myDialog.show()
+            //myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
         BackLink.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

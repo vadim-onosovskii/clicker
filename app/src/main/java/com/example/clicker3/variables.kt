@@ -116,9 +116,14 @@ class variables {
             }
             return false
         }
-
+        //OTHER BUISNESS
         fun buybar(): Boolean {
             if (cnt >= underground_bar_price) {
+                val rand = (1..1000).random()
+                if(rand <= 200){
+                    cnt -= 5 * underground_bar_price
+                    //notification
+                }
                 cnt -= underground_bar_price
                 underground_bar_price = (underground_bar_price * add).toInt();
                 moneypersec += 5
@@ -131,6 +136,11 @@ class variables {
 
         fun buyclub(): Boolean {
             if (cnt >= night_club_price) {
+                val rand = (1..1000).random()
+                if(rand <= 200){
+                    cnt -= 5 * night_club_price
+                    //notification
+                }
                 cnt -= night_club_price
                 night_club_price = (night_club_price * add).toInt();
                 moneypersec += 27
@@ -143,6 +153,11 @@ class variables {
 
         fun buycounterfuit(): Boolean {
             if (cnt >= counterfuit_goods_price) {
+                val rand = (1..1000).random()
+                if(rand <= 200){
+                    cnt -= 5 * counterfuit_goods_price
+                    //notification
+                }
                 cnt -= counterfuit_goods_price
                 counterfuit_goods_price = (counterfuit_goods_price * add).toInt();
                 moneypersec += 109
@@ -155,6 +170,11 @@ class variables {
 
         fun buycasino(): Boolean {
             if (cnt >= casino_price) {
+                val rand = (1..1000).random()
+                if(rand <= 200){
+                    cnt -= 5 * casino_price
+                    //notification
+                }
                 cnt -= casino_price
                 casino_price = (casino_price * add).toInt();
                 moneypersec += 600
@@ -167,6 +187,11 @@ class variables {
 
         fun buyempire(): Boolean {
             if (cnt >= boardwalk_empire_price) {
+                val rand = (1..1000).random()
+                if(rand <= 200){
+                    cnt -= 5 * boardwalk_empire_price
+                    //notification
+                }
                 cnt -= boardwalk_empire_price
                 boardwalk_empire_price = (boardwalk_empire_price * add).toInt();
                 moneypersec += 8000
