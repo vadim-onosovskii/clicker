@@ -28,6 +28,8 @@ class variables {
         var casino_price = 1000000
         var boardwalk_empire_price = 100000000
 
+        var bitcoin_price = 5000
+
         fun reset() {
             cnt = 0
             moneyperclick = 1
@@ -224,6 +226,20 @@ class variables {
                 moneypersec += 8000
                 moneyperclick += 24000
                 get_timer_rate()
+            } else res = result.NOT_ENOUGH
+            return res
+        }
+
+        fun buybitcoin(): result {
+            val res: result?
+            if (cnt >= bitcoin_price) {
+                val rand = (1..1000).random()
+                if (rand <= 600) {
+                    cnt += 5 * boardwalk_empire_price
+                    res = result.SUCCESS
+                } else {
+                    res = result.UNLUCKY
+                }
             } else res = result.NOT_ENOUGH
             return res
         }

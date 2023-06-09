@@ -21,6 +21,7 @@ open class MainActivity : AppCompatActivity() {
         val ButtonClick = findViewById<Button>(R.id.button_click)
         val Menu = findViewById<TextView>(R.id.menu)
         val IllegalBusiness = findViewById<TextView>(R.id.illegal_business)
+        val Investments = findViewById<TextView>(R.id.investments)
         val CurrentAmountText = findViewById<TextView>(R.id.current_amount)
         val Reset = findViewById<TextView>(R.id.reset)
         val ButtonGet = findViewById<Button>(R.id.button_get)
@@ -36,6 +37,11 @@ open class MainActivity : AppCompatActivity() {
         }
         Menu.setOnClickListener {
             val intent = Intent(this, LegalBusiness::class.java)
+            startActivity(intent)
+            timer.cancel()
+        }
+        Investments.setOnClickListener {
+            val intent = Intent(this, newone::class.java)
             startActivity(intent)
             timer.cancel()
         }
