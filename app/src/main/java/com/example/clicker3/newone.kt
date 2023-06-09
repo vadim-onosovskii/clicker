@@ -6,17 +6,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
 class newone : AppCompatActivity() {
     private val timer = Timer()
+    private val invest_timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_newone)
         val BackLink = findViewById<TextView>(R.id.back_link2)
         val bitcoin = findViewById<TextView>(R.id.buybitcoin)
+        val bitcointime = findViewById<TextView>(R.id.btctime)
         val myDialog = Dialog(this)
+        if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
+        else bitcointime.text = ""
         BackLink.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -25,6 +31,7 @@ class newone : AppCompatActivity() {
         bitcoin.setOnClickListener {
             val res : variables.Companion.result = variables.buybitcoin()
             if (res == variables.Companion.result.SUCCESS) {
+                variables.bitcoin_timer = 60
                 saveData()
             }
             else if (res == variables.Companion.result.UNLUCKY){
@@ -33,6 +40,7 @@ class newone : AppCompatActivity() {
             }
         }
         timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
+        invest_timer.scheduleAtFixedRate(InvestTimer(), 0, 1000)
     }
     private inner class TimeTask : TimerTask() {
         override fun run() {
@@ -43,6 +51,18 @@ class newone : AppCompatActivity() {
                 if(variables.moneypersec > 0) variables.cnt++
             }
             saveData()
+        }
+    }
+    private inner class InvestTimer : TimerTask() {
+        override fun run() {
+            if(variables.bitcoin_timer>0) {
+                --variables.bitcoin_timer
+                MainScope().launch {
+                    val bitcointime = findViewById<TextView>(R.id.btctime)
+                    if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
+                    else bitcointime.text = ""
+                }
+            }
         }
     }
     private fun saveData() {

@@ -29,6 +29,7 @@ class variables {
         var boardwalk_empire_price = 100000000
 
         var bitcoin_price = 5000
+        var bitcoin_timer = 0
 
         fun reset() {
             cnt = 0
