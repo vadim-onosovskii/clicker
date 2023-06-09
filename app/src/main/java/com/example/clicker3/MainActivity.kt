@@ -41,7 +41,7 @@ open class MainActivity : AppCompatActivity() {
             timer.cancel()
         }
         Investments.setOnClickListener {
-            val intent = Intent(this, newone::class.java)
+            val intent = Intent(this, Investment::class.java)
             startActivity(intent)
             timer.cancel()
         }

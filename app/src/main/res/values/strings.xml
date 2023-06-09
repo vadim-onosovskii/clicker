@@ -27,4 +27,6 @@
     <string name="get">Get</string>
     <string name="shop">Shop</string>
     <string name="title_activity_illegal_business">IllegalBusiness</string>
+    <string name="legal_buisness">Legal\nBuisness</string>
+    <string name="legal_business">Legal\nBusiness</string>
 </resources>

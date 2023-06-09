@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15sp"
-        android:text="@string/menu"
+        android:text="@string/legal_business"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

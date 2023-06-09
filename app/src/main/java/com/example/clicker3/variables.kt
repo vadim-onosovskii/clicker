@@ -235,10 +235,11 @@ class variables {
             val res: result?
             if (cnt >= bitcoin_price) {
                 val rand = (1..1000).random()
-                if (rand <= 600) {
-                    cnt += 5 * boardwalk_empire_price
+                if (rand <= 300) {
+                    cnt += 5 * bitcoin_price
                     res = result.SUCCESS
                 } else {
+                    cnt -= bitcoin_price
                     res = result.UNLUCKY
                 }
             } else res = result.NOT_ENOUGH
