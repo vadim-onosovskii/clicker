@@ -11,12 +11,12 @@ import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
-class newone : AppCompatActivity() {
+class Investment : AppCompatActivity() {
     private val timer = Timer()
     private val invest_timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_newone)
+        setContentView(R.layout.investment)
         val BackLink = findViewById<TextView>(R.id.back_link2)
         val bitcoin = findViewById<TextView>(R.id.buybitcoin)
         val bitcointime = findViewById<TextView>(R.id.btctime)
@@ -27,6 +27,7 @@ class newone : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             timer.cancel()
+            invest_timer.cancel()
         }
         bitcoin.setOnClickListener {
             val res : variables.Companion.result = variables.buybitcoin()

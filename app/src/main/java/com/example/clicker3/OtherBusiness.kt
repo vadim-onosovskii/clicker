@@ -10,11 +10,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
 class OtherBusiness : AppCompatActivity() {
     private val timer = Timer()
+    private val invest_timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.other_business)
@@ -40,6 +43,7 @@ class OtherBusiness : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             timer.cancel()
+            invest_timer.cancel()
         }
         bar.setOnClickListener {
             val res : variables.Companion.result = variables.buybar()
@@ -97,6 +101,14 @@ class OtherBusiness : AppCompatActivity() {
             }
         }
         timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
+        invest_timer.scheduleAtFixedRate(InvestTimer(), 0, 1000)
+    }
+    private inner class InvestTimer : TimerTask() {
+        override fun run() {
+            if(variables.bitcoin_timer>0) {
+                --variables.bitcoin_timer
+            }
+        }
     }
     private inner class TimeTask : TimerTask() {
         override fun run() {

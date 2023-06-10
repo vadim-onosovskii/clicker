@@ -15,6 +15,7 @@ import java.util.TimerTask
 
 open class MainActivity : AppCompatActivity() {
     private val timer = Timer()
+    private val invest_timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,16 +40,19 @@ open class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LegalBusiness::class.java)
             startActivity(intent)
             timer.cancel()
+            invest_timer.cancel()
         }
         Investments.setOnClickListener {
-            val intent = Intent(this, newone::class.java)
+            val intent = Intent(this, Investment::class.java)
             startActivity(intent)
             timer.cancel()
+            invest_timer.cancel()
         }
         IllegalBusiness.setOnClickListener {
             val intent = Intent(this, OtherBusiness::class.java)
             startActivity(intent)
             timer.cancel()
+            invest_timer.cancel()
         }
         ButtonGet.setOnClickListener {
             if (AmountText.text.isDigitsOnly()) {
@@ -61,8 +65,15 @@ open class MainActivity : AppCompatActivity() {
             saveData()
         }
         timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
+        invest_timer.scheduleAtFixedRate(InvestTimer(), 0, 1000)
     }
-
+    private inner class InvestTimer : TimerTask() {
+        override fun run() {
+            if(variables.bitcoin_timer>0) {
+                --variables.bitcoin_timer
+            }
+        }
+    }
     private inner class TimeTask : TimerTask() {
         override fun run() {
             if(variables.is_timerrate_too_low) {

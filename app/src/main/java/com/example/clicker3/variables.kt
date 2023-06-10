@@ -233,12 +233,13 @@ class variables {
 
         fun buybitcoin(): result {
             val res: result?
-            if (cnt >= bitcoin_price) {
+            if (cnt >= bitcoin_price && bitcoin_timer == 0) {
                 val rand = (1..1000).random()
-                if (rand <= 600) {
+                if (rand <= 300) {
                     cnt += 5 * bitcoin_price
                     res = result.SUCCESS
                 } else {
+                    cnt -= bitcoin_price
                     res = result.UNLUCKY
                 }
             } else res = result.NOT_ENOUGH

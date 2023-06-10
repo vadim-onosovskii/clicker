@@ -5,11 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
 class LegalBusiness : AppCompatActivity() {
     private val timer = Timer()
+    private val invest_timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.legal_business)
@@ -30,6 +33,7 @@ class LegalBusiness : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             timer.cancel()
+            invest_timer.cancel()
         }
         lemStand.setOnClickListener {
             if (variables.buylem() == variables.Companion.result.SUCCESS) {
@@ -68,6 +72,14 @@ class LegalBusiness : AppCompatActivity() {
             }
         }
         timer.scheduleAtFixedRate(TimeTask(), 0, variables.timerrate)
+        invest_timer.scheduleAtFixedRate(InvestTimer(), 0, 1000)
+    }
+    private inner class InvestTimer : TimerTask() {
+        override fun run() {
+            if(variables.bitcoin_timer>0) {
+                --variables.bitcoin_timer
+            }
+        }
     }
 
     private inner class TimeTask : TimerTask() {
