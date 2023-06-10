@@ -31,6 +31,17 @@ class variables {
         var bitcoin_price = 5000.toLong()
         var bitcoin_timer = 0
 
+        var shares_price = 750000.toLong()
+        var shares_timer = 0
+
+        var gold_price = 900000000.toLong()
+        var gold_timer = 0
+
+        var NFT_price = 750000000000.toLong()
+        var NFT_timer = 0
+
+        var rand_unlucky = 700
+
         fun reset() {
             cnt = 0.toLong()
             moneyperclick = 1.toLong()
@@ -235,12 +246,64 @@ class variables {
             val res: result?
             if (cnt >= bitcoin_price && bitcoin_timer == 0) {
                 val rand = (1..1000).random()
-                if (rand <= 300) {
+                if (rand <= 300 + rand_unlucky) {
                     cnt += 5 * bitcoin_price
                     res = result.SUCCESS
+                    rand_unlucky = 0
                 } else {
                     cnt -= bitcoin_price
                     res = result.UNLUCKY
+                    rand_unlucky += 100
+                }
+            } else res = result.NOT_ENOUGH
+            return res
+        }
+        fun buyshares(): result {
+            val res: result?
+            if (cnt >= shares_price && shares_timer == 0) {
+                val rand = (1..1000).random()
+                if (rand <= 300 + rand_unlucky) {
+                    cnt += 5 * shares_price
+                    res = result.SUCCESS
+                    rand_unlucky = 0
+                } else {
+                    cnt -= shares_price
+                    res = result.UNLUCKY
+                    rand_unlucky += 100
+                }
+            } else res = result.NOT_ENOUGH
+            return res
+        }
+
+        fun buygold(): result {
+            val res: result?
+            if (cnt >= gold_price && gold_timer == 0) {
+                val rand = (1..1000).random()
+                if (rand <= 300 + rand_unlucky) {
+                    cnt += 5 * gold_price
+                    res = result.SUCCESS
+                    rand_unlucky = 0
+                } else {
+                    cnt -= gold_price
+                    res = result.UNLUCKY
+                    rand_unlucky += 100
+                }
+            } else res = result.NOT_ENOUGH
+            return res
+        }
+
+        fun buynft(): result {
+            val res: result?
+            if (cnt >= NFT_price && NFT_timer == 0) {
+                val rand = (1..1000).random()
+                if (rand <= 300 + rand_unlucky) {
+                    cnt += 5 * NFT_price
+                    res = result.SUCCESS
+                    rand_unlucky = 0
+                } else {
+                    cnt -= NFT_price
+                    res = result.UNLUCKY
+                    rand_unlucky += 100
                 }
             } else res = result.NOT_ENOUGH
             return res

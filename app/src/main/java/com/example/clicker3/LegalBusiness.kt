@@ -79,6 +79,15 @@ class LegalBusiness : AppCompatActivity() {
             if(variables.bitcoin_timer>0) {
                 --variables.bitcoin_timer
             }
+            if(variables.shares_timer>0) {
+                --variables.shares_timer
+            }
+            if(variables.gold_timer>0) {
+                --variables.shares_timer
+            }
+            if(variables.NFT_timer>0) {
+                --variables.NFT_timer
+            }
         }
     }
 

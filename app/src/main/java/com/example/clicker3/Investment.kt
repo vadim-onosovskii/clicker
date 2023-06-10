@@ -20,9 +20,21 @@ class Investment : AppCompatActivity() {
         val BackLink = findViewById<TextView>(R.id.back_link2)
         val bitcoin = findViewById<TextView>(R.id.buybitcoin)
         val bitcointime = findViewById<TextView>(R.id.btctime)
+        val shares = findViewById<TextView>(R.id.buyshares)
+        val sharestime = findViewById<TextView>(R.id.sharestime)
+        val gold = findViewById<TextView>(R.id.buygold)
+        val goldtime = findViewById<TextView>(R.id.goldtime)
+        val NFT = findViewById<TextView>(R.id.buyNFT)
+        val NFTtime = findViewById<TextView>(R.id.NFTtime)
         val myDialog = Dialog(this)
         if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
         else bitcointime.text = ""
+        if(variables.shares_timer != 0) sharestime.text = variables.shares_timer.toString()
+        else sharestime.text = ""
+        if(variables.gold_timer != 0) goldtime.text = variables.gold_timer.toString()
+        else goldtime.text = ""
+        if(variables.NFT_timer != 0) NFTtime.text = variables.NFT_timer.toString()
+        else NFTtime.text = ""
         BackLink.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -33,6 +45,39 @@ class Investment : AppCompatActivity() {
             val res : variables.Companion.result = variables.buybitcoin()
             if (res == variables.Companion.result.SUCCESS) {
                 variables.bitcoin_timer = 60
+                saveData()
+            }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
+        }
+        shares.setOnClickListener {
+            val res : variables.Companion.result = variables.buyshares()
+            if (res == variables.Companion.result.SUCCESS) {
+                variables.shares_timer = 60
+                saveData()
+            }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
+        }
+        gold.setOnClickListener {
+            val res : variables.Companion.result = variables.buygold()
+            if (res == variables.Companion.result.SUCCESS) {
+                variables.gold_timer = 60
+                saveData()
+            }
+            else if (res == variables.Companion.result.UNLUCKY){
+                myDialog.setContentView(R.layout.popup_fail)
+                myDialog.show()
+            }
+        }
+        NFT.setOnClickListener {
+            val res : variables.Companion.result = variables.buynft()
+            if (res == variables.Companion.result.SUCCESS) {
+                variables.NFT_timer = 60
                 saveData()
             }
             else if (res == variables.Companion.result.UNLUCKY){
@@ -58,11 +103,29 @@ class Investment : AppCompatActivity() {
         override fun run() {
             if(variables.bitcoin_timer>0) {
                 --variables.bitcoin_timer
-                MainScope().launch {
-                    val bitcointime = findViewById<TextView>(R.id.btctime)
-                    if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
-                    else bitcointime.text = ""
-                }
+            }
+            if(variables.shares_timer>0) {
+                --variables.shares_timer
+            }
+            if(variables.gold_timer>0) {
+                --variables.shares_timer
+            }
+            if(variables.NFT_timer>0) {
+                --variables.NFT_timer
+            }
+            MainScope().launch {
+                val bitcointime = findViewById<TextView>(R.id.btctime)
+                if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
+                else bitcointime.text = ""
+                val sharestime = findViewById<TextView>(R.id.sharestime)
+                if(variables.shares_timer != 0) sharestime.text = variables.shares_timer.toString()
+                else sharestime.text = ""
+                val goldtime = findViewById<TextView>(R.id.goldtime)
+                if(variables.gold_timer != 0) goldtime.text = variables.gold_timer.toString()
+                else goldtime.text = ""
+                val NFTtime = findViewById<TextView>(R.id.NFTtime)
+                if(variables.NFT_timer != 0) NFTtime.text = variables.NFT_timer.toString()
+                else NFTtime.text = ""
             }
         }
     }
