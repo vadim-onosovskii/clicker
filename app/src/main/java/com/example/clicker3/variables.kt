@@ -9,51 +9,51 @@ class variables {
             SUCCESS, UNLUCKY, NOT_ENOUGH
         }
 
-        var cnt = 0
-        var moneypersec = 0
-        var moneyperclick = 1
+        var cnt = 0L
+        var moneypersec = 0.toLong()
+        var moneyperclick = 1.toLong()
         var add = 1.2
-        var lem_stand_price = 100
-        var startUp_price = 1000
-        var advAgency_price = 12000
-        var twitter_price = 150000
-        var google_price = 15000000
-        var tourism_price = 30000000
+        var lem_stand_price = 100.toLong()
+        var startUp_price = 1000.toLong()
+        var advAgency_price = 12000.toLong()
+        var twitter_price = 150000.toLong()
+        var google_price = 15000000.toLong()
+        var tourism_price = 30000000.toLong()
         var timerrate: Long = 1000
         var is_timerrate_too_low = false
 
-        var underground_bar_price = 1000
-        var night_club_price = 10000
-        var counterfuit_goods_price = 100000
-        var casino_price = 1000000
-        var boardwalk_empire_price = 100000000
+        var underground_bar_price = 1000.toLong()
+        var night_club_price = 10000.toLong()
+        var counterfuit_goods_price = 100000.toLong()
+        var casino_price = 1000000.toLong()
+        var boardwalk_empire_price = 100000000.toLong()
 
-        var bitcoin_price = 5000
+        var bitcoin_price = 5000.toLong()
         var bitcoin_timer = 0
 
         fun reset() {
-            cnt = 0
-            moneyperclick = 1
-            lem_stand_price = 100
-            startUp_price = 1000
-            advAgency_price = 12000
-            twitter_price = 150000
-            google_price = 1500000
-            tourism_price = 30000000
-            moneypersec = 0
+            cnt = 0.toLong()
+            moneyperclick = 1.toLong()
+            lem_stand_price = 100.toLong()
+            startUp_price = 1000.toLong()
+            advAgency_price = 12000.toLong()
+            twitter_price = 150000.toLong()
+            google_price = 1500000.toLong()
+            tourism_price = 30000000.toLong()
+            moneypersec = 0.toLong()
             timerrate = 1000
             is_timerrate_too_low = false
 
-            underground_bar_price = 1000
-            night_club_price = 10000
-            counterfuit_goods_price = 100000
-            casino_price = 1000000
-            boardwalk_empire_price = 100000000
+            underground_bar_price = 1000.toLong()
+            night_club_price = 10000.toLong()
+            counterfuit_goods_price = 100000.toLong()
+            casino_price = 1000000.toLong()
+            boardwalk_empire_price = 100000000.toLong()
 
         }
 
         fun get_timer_rate() {
-            timerrate = (1000 / moneypersec).toLong()
+            timerrate = (1000 / moneypersec)
             if (timerrate < 100) {
                 timerrate = 100
                 is_timerrate_too_low = true
@@ -65,7 +65,7 @@ class variables {
             val res: result?
             if (cnt >= lem_stand_price) {
                 cnt -= lem_stand_price
-                lem_stand_price = (lem_stand_price * add).toInt()
+                lem_stand_price = (lem_stand_price * add).toLong()
                 moneypersec += 1
                 get_timer_rate()
                 res = result.SUCCESS
@@ -77,7 +77,7 @@ class variables {
             val res: result?
             if (cnt >= startUp_price) {
                 cnt -= startUp_price
-                startUp_price = (startUp_price * add).toInt()
+                startUp_price = (startUp_price * add).toLong()
                 moneypersec += 5
                 get_timer_rate()
                 res = result.SUCCESS
@@ -89,7 +89,7 @@ class variables {
             val res: result?
             if (cnt >= advAgency_price) {
                 cnt -= advAgency_price
-                advAgency_price = (advAgency_price * add).toInt()
+                advAgency_price = (advAgency_price * add).toLong()
                 moneypersec += 27
                 get_timer_rate()
                 res = result.SUCCESS
@@ -101,7 +101,7 @@ class variables {
             val res: result?
             if (cnt >= twitter_price) {
                 cnt -= twitter_price
-                twitter_price = (twitter_price * add).toInt();
+                twitter_price = (twitter_price * add).toLong()
                 moneypersec += 109
                 get_timer_rate()
                 res = result.SUCCESS
@@ -113,7 +113,7 @@ class variables {
             val res: result?
             if (cnt >= google_price) {
                 cnt -= google_price
-                google_price = (google_price * add).toInt()
+                google_price = (google_price * add).toLong()
                 moneypersec += 600
                 get_timer_rate()
                 res = result.SUCCESS
@@ -125,7 +125,7 @@ class variables {
             val res: result?
             if (cnt >= tourism_price) {
                 cnt -= tourism_price
-                tourism_price = (tourism_price * add).toInt();
+                tourism_price = (tourism_price * add).toLong()
                 moneypersec += 8000
                 get_timer_rate()
                 res = result.SUCCESS
@@ -145,7 +145,7 @@ class variables {
                     res = result.SUCCESS
                 }
                 cnt -= underground_bar_price
-                underground_bar_price = (underground_bar_price * add).toInt();
+                underground_bar_price = (underground_bar_price * add).toLong()
                 moneypersec += 5
                 moneyperclick += 15
                 get_timer_rate()
@@ -166,7 +166,7 @@ class variables {
                     res = result.SUCCESS
                 }
                 cnt -= night_club_price
-                night_club_price = (night_club_price * add).toInt();
+                night_club_price = (night_club_price * add).toLong()
                 moneypersec += 27
                 moneyperclick += 81
                 get_timer_rate()
@@ -185,7 +185,7 @@ class variables {
                     res = result.SUCCESS
                 }
                 cnt -= counterfuit_goods_price
-                counterfuit_goods_price = (counterfuit_goods_price * add).toInt();
+                counterfuit_goods_price = (counterfuit_goods_price * add).toLong()
                 moneypersec += 109
                 moneyperclick += 327
                 get_timer_rate()
@@ -204,7 +204,7 @@ class variables {
                     res = result.SUCCESS
                 }
                 cnt -= casino_price
-                casino_price = (casino_price * add).toInt();
+                casino_price = (casino_price * add).toLong()
                 moneypersec += 600
                 moneyperclick += 1800
                 get_timer_rate()
@@ -223,7 +223,7 @@ class variables {
                     res = result.SUCCESS
                 }
                 cnt -= boardwalk_empire_price
-                boardwalk_empire_price = (boardwalk_empire_price * add).toInt();
+                boardwalk_empire_price = (boardwalk_empire_price * add).toLong();
                 moneypersec += 8000
                 moneyperclick += 24000
                 get_timer_rate()
