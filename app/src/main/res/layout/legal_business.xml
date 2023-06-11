@@ -3,30 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".LegalBusiness" >
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1000dp"
-        android:text="@string/you_are_in_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/back_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:text="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/shop"
+        app:layout_constraintStart_toEndOf="@+id/back_link"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
         android:id="@+id/lemonade_stand"
         android:layout_width="wrap_content"
@@ -83,16 +90,6 @@
         app:layout_constraintTop_toBottomOf="@+id/google" />
 
     <TextView
-        android:id="@+id/shop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/shop"
-        app:layout_constraintStart_toEndOf="@+id/back_link"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/buylem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,5 +143,18 @@
         android:text="30000000"
         app:layout_constraintStart_toStartOf="@+id/buyGoogle"
         app:layout_constraintTop_toBottomOf="@+id/buyGoogle" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEW TEXT"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tourism"
+                app:layout_constraintTop_toBottomOf="@+id/tourism"
+                android:layout_marginTop="300dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
