@@ -10,56 +10,56 @@ class variables {
         }
 
         var cnt = 0L
-        var moneypersec = 0.toLong()
-        var moneyperclick = 1.toLong()
+        var moneypersec = 0L
+        var moneyperclick = 1L
         var add = 1.2
-        var lem_stand_price = 100.toLong()
-        var startUp_price = 1000.toLong()
-        var advAgency_price = 12000.toLong()
-        var twitter_price = 150000.toLong()
-        var google_price = 15000000.toLong()
-        var tourism_price = 30000000.toLong()
-        var timerrate: Long = 1000
+        var lem_stand_price = 100L
+        var startUp_price = 1000L
+        var advAgency_price = 12000L
+        var twitter_price = 150000L
+        var google_price = 15000000L
+        var tourism_price = 30000000L
+        var timerrate= 1000L
         var is_timerrate_too_low = false
 
-        var underground_bar_price = 1000.toLong()
-        var night_club_price = 10000.toLong()
-        var counterfuit_goods_price = 100000.toLong()
-        var casino_price = 1000000.toLong()
-        var boardwalk_empire_price = 100000000.toLong()
+        var underground_bar_price = 1000L
+        var night_club_price = 10000L
+        var counterfuit_goods_price = 100000L
+        var casino_price = 1000000L
+        var boardwalk_empire_price = 100000000L
 
-        var bitcoin_price = 5000.toLong()
-        var bitcoin_timer = 0
+        var bitcoin_price = 5000L
+        var bitcoin_timer = 0L
 
-        var shares_price = 750000.toLong()
-        var shares_timer = 0
+        var shares_price = 750000L
+        var shares_timer = 0L
 
-        var gold_price = 900000000.toLong()
-        var gold_timer = 0
+        var gold_price = 900000000L
+        var gold_timer = 0L
 
-        var NFT_price = 750000000000.toLong()
-        var NFT_timer = 0
+        var NFT_price = 750000000000L
+        var NFT_timer = 0L
 
-        var rand_unlucky = 700
+        var rand_unlucky = 700L
 
         fun reset() {
-            cnt = 0.toLong()
-            moneyperclick = 1.toLong()
-            lem_stand_price = 100.toLong()
-            startUp_price = 1000.toLong()
-            advAgency_price = 12000.toLong()
-            twitter_price = 150000.toLong()
-            google_price = 1500000.toLong()
-            tourism_price = 30000000.toLong()
-            moneypersec = 0.toLong()
-            timerrate = 1000
+            cnt = 0L
+            moneyperclick = 1L
+            lem_stand_price = 100L
+            startUp_price = 1000L
+            advAgency_price = 12000L
+            twitter_price = 150000L
+            google_price = 1500000L
+            tourism_price = 30000000L
+            moneypersec = 0L
+            timerrate = 1000L
             is_timerrate_too_low = false
 
-            underground_bar_price = 1000.toLong()
-            night_club_price = 10000.toLong()
-            counterfuit_goods_price = 100000.toLong()
-            casino_price = 1000000.toLong()
-            boardwalk_empire_price = 100000000.toLong()
+            underground_bar_price = 1000L
+            night_club_price = 10000L
+            counterfuit_goods_price = 100000L
+            casino_price = 1000000L
+            boardwalk_empire_price = 100000000L
 
         }
 
@@ -71,7 +71,7 @@ class variables {
             }
         }
 
-        //BUY FUNCTIONS
+        //LEGAL BUSINESS
         fun buylem(): result {
             val res: result?
             if (cnt >= lem_stand_price) {
@@ -242,9 +242,11 @@ class variables {
             return res
         }
 
+        //INVESTMENTS
+
         fun buybitcoin(): result {
             val res: result?
-            if (cnt >= bitcoin_price && bitcoin_timer == 0) {
+            if (cnt >= bitcoin_price && bitcoin_timer == 0L) {
                 val rand = (1..1000).random()
                 if (rand <= 300 + rand_unlucky) {
                     cnt += 5 * bitcoin_price
@@ -260,7 +262,7 @@ class variables {
         }
         fun buyshares(): result {
             val res: result?
-            if (cnt >= shares_price && shares_timer == 0) {
+            if (cnt >= shares_price && shares_timer == 0L) {
                 val rand = (1..1000).random()
                 if (rand <= 300 + rand_unlucky) {
                     cnt += 5 * shares_price
@@ -277,7 +279,7 @@ class variables {
 
         fun buygold(): result {
             val res: result?
-            if (cnt >= gold_price && gold_timer == 0) {
+            if (cnt >= gold_price && gold_timer == 0L) {
                 val rand = (1..1000).random()
                 if (rand <= 300 + rand_unlucky) {
                     cnt += 5 * gold_price
@@ -294,7 +296,7 @@ class variables {
 
         fun buynft(): result {
             val res: result?
-            if (cnt >= NFT_price && NFT_timer == 0) {
+            if (cnt >= NFT_price && NFT_timer == 0L) {
                 val rand = (1..1000).random()
                 if (rand <= 300 + rand_unlucky) {
                     cnt += 5 * NFT_price

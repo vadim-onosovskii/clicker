@@ -27,13 +27,13 @@ class Investment : AppCompatActivity() {
         val NFT = findViewById<TextView>(R.id.buyNFT)
         val NFTtime = findViewById<TextView>(R.id.NFTtime)
         val myDialog = Dialog(this)
-        if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
+        if(variables.bitcoin_timer != 0L) bitcointime.text = variables.bitcoin_timer.toString()
         else bitcointime.text = ""
-        if(variables.shares_timer != 0) sharestime.text = variables.shares_timer.toString()
+        if(variables.shares_timer != 0L) sharestime.text = variables.shares_timer.toString()
         else sharestime.text = ""
-        if(variables.gold_timer != 0) goldtime.text = variables.gold_timer.toString()
+        if(variables.gold_timer != 0L) goldtime.text = variables.gold_timer.toString()
         else goldtime.text = ""
-        if(variables.NFT_timer != 0) NFTtime.text = variables.NFT_timer.toString()
+        if(variables.NFT_timer != 0L) NFTtime.text = variables.NFT_timer.toString()
         else NFTtime.text = ""
         BackLink.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -115,16 +115,16 @@ class Investment : AppCompatActivity() {
             }
             MainScope().launch {
                 val bitcointime = findViewById<TextView>(R.id.btctime)
-                if(variables.bitcoin_timer != 0) bitcointime.text = variables.bitcoin_timer.toString()
+                if(variables.bitcoin_timer != 0L) bitcointime.text = variables.bitcoin_timer.toString()
                 else bitcointime.text = ""
                 val sharestime = findViewById<TextView>(R.id.sharestime)
-                if(variables.shares_timer != 0) sharestime.text = variables.shares_timer.toString()
+                if(variables.shares_timer != 0L) sharestime.text = variables.shares_timer.toString()
                 else sharestime.text = ""
                 val goldtime = findViewById<TextView>(R.id.goldtime)
-                if(variables.gold_timer != 0) goldtime.text = variables.gold_timer.toString()
+                if(variables.gold_timer != 0L) goldtime.text = variables.gold_timer.toString()
                 else goldtime.text = ""
                 val NFTtime = findViewById<TextView>(R.id.NFTtime)
-                if(variables.NFT_timer != 0) NFTtime.text = variables.NFT_timer.toString()
+                if(variables.NFT_timer != 0L) NFTtime.text = variables.NFT_timer.toString()
                 else NFTtime.text = ""
             }
         }
